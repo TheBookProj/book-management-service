@@ -10,5 +10,5 @@ venv/
 *.env
 *.json
 
-# Migrations (optional)
+# Migrations
 */migrations/__pycache__/
