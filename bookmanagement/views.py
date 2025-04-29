@@ -58,11 +58,6 @@ def get_book(request):
         book["subjects"] = [subject for subject in data["subjects"] if subject[0].isupper()] if "subjects" in data else []
         book["covers"] = [f"https://covers.openlibrary.org/b/id/{cover}-L.jpg" for cover in data["covers"]] if "covers" in data else []
 
-        url = f"{settings.OPEN_LIBRARY_API["API_BASE_URL"]}/{key}/ratings.json"
-        resp = requests.get(url)
-        data = resp.json()
-        book["rating"] = data["summary"]["average"] if "summary" in data and "average" in data["summary"] else -1
-
         return JsonResponse(book, status=200, safe=False)
     except:
         return JsonResponse({"error_msg": "Server error"}, status=500)
