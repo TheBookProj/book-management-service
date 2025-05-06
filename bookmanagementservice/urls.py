@@ -19,7 +19,6 @@ from django.urls import path
 from bookmanagementservice import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('books/search', views.search_for_books),
     path('books/get', views.get_book)
 ]
