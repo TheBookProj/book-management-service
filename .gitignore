@@ -9,6 +9,7 @@ venv/
 # Django secret files
 *.env
 *.json
+*.ini
 
 # Migrations
 */migrations/__pycache__/

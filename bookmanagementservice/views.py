@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 import requests
 
 @api_view(['GET'])
-def search_for_books(request):
+def search(request):
     try:
         user_query = request.GET.get("q", "").replace(" ", "+")
         url = f"{settings.OPEN_LIBRARY_API["API_BASE_URL"]}/search.json?q={user_query}&fields=key,cover_i,title,author_name,ratings_average&limit={settings.OPEN_LIBRARY_API["API_MAX_RESULTS"]}"
@@ -32,7 +32,7 @@ def search_for_books(request):
         return JsonResponse({"error_msg":"Server error"}, status=500)
 
 @api_view(['GET'])
-def get_book(request):
+def get(request):
     try:
         key = request.GET.get("key", "")
         if not key:
